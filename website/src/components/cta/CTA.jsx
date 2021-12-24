@@ -5,7 +5,7 @@ import './cta.css';
 const CTA = () => {
     return (
         <div>
-          CTA  
+           <h1>CTA</h1>
         </div>
     )
 }
