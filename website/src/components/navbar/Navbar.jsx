@@ -1,33 +1,54 @@
-import React from 'react';
-import './navbar.css';
+import React, { useState } from 'react';
+import { RiMenu3Line, RiCloseLine } from "react-icons/ri";
 import logo from '../../assets/logo.svg';
-import { RiMenu3Line, RiCloseLin } from 'react-icons/ri';
-
-//BEM -> Block Element Modifier
+import './navbar.css';
 
 const Navbar = () => {
-    return (
-        <div className = "gpt3__navbar">
-          <div className = "gpt3__navbar-links">
-          <div className = "gpt3__navbar-links_logo">
-          <img src={logo}></img>
+  const [toggleMenu, setToggleMenu] = useState(false);
 
-          </div>
-          <div className="gpt1__navbar-links_container">
-            <p><a href = "home">Home</a></p>
-            <p><a href = "wgpt3">What is GPT?</a></p>
-            <p><a href = "possibility">Open AI</a></p>
-            <p><a href = "features">Case Studies</a></p>
-            <p><a href = "blog">Library</a></p>
-          </div>
-          </div>
-            
+  return (
+    <div className="gpt3__navbar">
+      <div className="gpt3__navbar-links">
+        <div className="gpt3__navbar-links_logo">
+          <img src={logo} />
         </div>
-    )
-}
+        <div className="gpt3__navbar-links_container">
+          <p><a href="#home">Home</a></p>
+          <p><a href="#wgpt3">What is GPT3?</a></p>
+          <p><a href="#possibility">Open AI</a></p>
+          <p><a href="#features">Case Studies</a></p>
+          <p><a href="#blog">Library</a></p>
+        </div>
+      </div>
+      <div className="gpt3__navbar-sign">
+        <p>Sign in</p>
+        <button type="button">Sign up</button>
+      </div>
+      <div className="gpt3__navbar-menu">
+        {toggleMenu
+          ? <RiCloseLine color="#fff" size={27} onClick={() => setToggleMenu(false)} />
+          : <RiMenu3Line color="#fff" size={27} onClick={() => setToggleMenu(true)} />}
+        {toggleMenu && (
+        <div className="gpt3__navbar-menu_container scale-up-center">
+          <div className="gpt3__navbar-menu_container-links">
+            <p><a href="#home">Home</a></p>
+            <p><a href="#wgpt3">What is GPT3?</a></p>
+            <p><a href="#possibility">Open AI</a></p>
+            <p><a href="#features">Case Studies</a></p>
+            <p><a href="#blog">Library</a></p>
+          </div>
+          <div className="gpt3__navbar-menu_container-links-sign">
+            <p>Sign in</p>
+            <button type="button">Sign up</button>
+          </div>
+        </div>
+        )}
+      </div>
+    </div>
+  );
+};
 
-export default Navbar
-
+export default Navbar;
 
 // <svg width="118" height="30" viewBox="0 0 118 30" fill="none" xmlns="http://www.w3.org/2000/svg">
 //     <path d="M30.003 13.3516V15.8242C30.003 20.1374 28.6474 23.5852 25.9362 26.1676C23.2527 28.7225 19.836 30 15.6862 30C11.1768 30 7.42813 28.5577 4.44028 25.6731C1.48009 22.7885 0 19.2445 0 15.0412C0 10.8379 1.46626 7.28022 4.39878 4.36813C7.35897 1.45604 10.9693 0 15.2297 0C17.9409 0 20.417 0.604396 22.6579 1.81319C24.9264 3.02198 26.6832 4.61538 27.9281 6.59341L22.2844 9.80769C21.6481 8.81868 20.6936 8.00824 19.421 7.37637C18.1761 6.74451 16.7652 6.42857 15.1882 6.42857C12.726 6.42857 10.6788 7.23901 9.04655 8.85989C7.44196 10.4808 6.63967 12.5549 6.63967 15.0824C6.63967 17.5824 7.46963 19.6291 9.12954 21.2225C10.7895 22.7885 13.0027 23.5714 15.7692 23.5714C19.6147 23.5714 22.0907 22.0879 23.1973 19.1209H15.4372V13.3516H30.003Z" fill="white"/>
